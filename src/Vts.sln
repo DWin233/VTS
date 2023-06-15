@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vts.Mgrte.Console", "Vts.Mg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vts.FemModeling", "Vts.FemModeling\Vts.FemModeling.csproj", "{6BA37669-7BA8-4FF2-911A-0E70EECD450B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vts.Benchmark.Test", "Vts.Benchmark.Test\Vts.Benchmark.Test.csproj", "{A6722D39-1328-420A-AA6D-9333A0F3CC42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Benchmark|Any CPU = Benchmark|Any CPU
@@ -285,6 +287,38 @@ Global
 		{6BA37669-7BA8-4FF2-911A-0E70EECD450B}.ReleaseWhiteList|Win32.Build.0 = Release|Any CPU
 		{6BA37669-7BA8-4FF2-911A-0E70EECD450B}.ReleaseWhiteList|x86.ActiveCfg = Release|Any CPU
 		{6BA37669-7BA8-4FF2-911A-0E70EECD450B}.ReleaseWhiteList|x86.Build.0 = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Benchmark|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Benchmark|Any CPU.Build.0 = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Benchmark|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Benchmark|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Benchmark|Win32.ActiveCfg = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Benchmark|Win32.Build.0 = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Benchmark|x86.ActiveCfg = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Benchmark|x86.Build.0 = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Debug|Win32.Build.0 = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Debug|x86.Build.0 = Debug|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Release|Win32.ActiveCfg = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Release|Win32.Build.0 = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Release|x86.ActiveCfg = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.Release|x86.Build.0 = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.ReleaseWhiteList|Any CPU.ActiveCfg = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.ReleaseWhiteList|Any CPU.Build.0 = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.ReleaseWhiteList|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.ReleaseWhiteList|Mixed Platforms.Build.0 = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.ReleaseWhiteList|Win32.ActiveCfg = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.ReleaseWhiteList|Win32.Build.0 = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.ReleaseWhiteList|x86.ActiveCfg = Release|Any CPU
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42}.ReleaseWhiteList|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -299,9 +333,10 @@ Global
 		{3B0676C4-5CF1-4A0B-97E4-0CDF2B035702} = {D6A3DE7A-7E93-4932-AA8F-C612FD97830E}
 		{197229DB-8CEC-48DD-A953-FBC58D1A3EBC} = {D6A3DE7A-7E93-4932-AA8F-C612FD97830E}
 		{6BA37669-7BA8-4FF2-911A-0E70EECD450B} = {E87433B1-D691-4D36-BB6B-3B766192CC8E}
+		{A6722D39-1328-420A-AA6D-9333A0F3CC42} = {920000AB-D955-4399-AD00-78523C740E2A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BB1B236A-1BE9-476A-A4B3-8C0F51F1FDA7}
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+		SolutionGuid = {BB1B236A-1BE9-476A-A4B3-8C0F51F1FDA7}
 	EndGlobalSection
 EndGlobal
