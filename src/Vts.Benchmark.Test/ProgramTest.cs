@@ -37,6 +37,8 @@ namespace Vts.Benchmark.Test
             "surface_fiber_detector"
         };
 
+        private const string BenchmarkFolder = "BenchmarkDotNet.Artifacts";
+
         /// <summary>
         /// clear all previously generated folders and files, then regenerate sample infiles using "geninfiles" option.
         /// </summary>
@@ -71,6 +73,11 @@ namespace Vts.Benchmark.Test
                 }
             }
 
+            // delete any previously generated benchmark logs
+            if (Directory.Exists(BenchmarkFolder))
+            {
+                Directory.Delete(BenchmarkFolder, true);
+            }
         }
 
 
@@ -80,17 +87,19 @@ namespace Vts.Benchmark.Test
         [Test]
         public void Validate_Benchmark_output()
         {
+            // need to build and run this in configuration in "Benchmark"
             var arguments = new string[] { "" };
             Program.Main(arguments);
             // read in output file
-            var resultsFolder = "BenchmarkDotNet.Artifacts";
-            if (Directory.Exists(resultsFolder))
+            if (!Directory.Exists(BenchmarkFolder)) return;
+
+            // need to figure out how to use wild card for file name
+            const string logFile = BenchmarkFolder + "/Vts.MonteCarlo.MonteCarloSimulation-*.log";
+            if (File.Exists(logFile))
             {
-                // need to figure out how to use wild card for file name
-                if (File.Exists("BenchmarkRun-20230615-152136.log"))
-                {
-                    // this file does not contain what goes to the screen
-                }
+                // open file to read statistics
+                var text = File.ReadAllText(logFile);
+
             }
 
         }
