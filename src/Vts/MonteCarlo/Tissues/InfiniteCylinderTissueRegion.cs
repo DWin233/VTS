@@ -14,7 +14,7 @@ namespace Vts.MonteCarlo.Tissues
         /// CylinderTissueRegion assumes cylinder axis is parallel with z-axis
         /// </summary>
         /// <param name="center">center position</param>
-        /// <param name="radius">radius in x-y plane</param>
+        /// <param name="radius">radius in x-z plane</param>
         /// <param name="op">optical properties of cylinder</param>
         public InfiniteCylinderTissueRegion(Position center, double radius, OpticalProperties op) 
         {
@@ -23,6 +23,24 @@ namespace Vts.MonteCarlo.Tissues
             Radius = radius;
             RegionOP = op;
         }
+
+        /// <summary>
+        /// Overload to facilitate MultiLayerInfiniteCylinderTissue
+        /// </summary>
+        /// <param name="zRange"></param>
+        /// <param name="radius">radius in x-z plane</param>
+        /// <param name="op">optical properties of cylinder</param>
+        public InfiniteCylinderTissueRegion(DoubleRange zRange, double radius, OpticalProperties op)
+        {
+            TissueRegionType = "InfiniteCylinder";
+            Radius = radius;
+            RegionOP = op;
+            // determine Center from radius and zRange
+            Center = double.IsNegativeInfinity(radius) ? 
+                new Position(0, 0, double.NegativeInfinity) : 
+                new Position(0, 0, zRange.Start + radius);
+        }
+
 
         /// <summary>
         /// default constructor
