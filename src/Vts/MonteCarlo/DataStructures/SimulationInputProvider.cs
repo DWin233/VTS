@@ -42,9 +42,10 @@ namespace Vts.MonteCarlo
                 EmbeddedDirectionalCircularSourceEllipTissueFluenceOfXAndYAndZ(),
                 PointSourceSurfaceFiberTissueAndDetector(),
                 PointSourceSlantedRecessedFiberTissueAndDetector(),
+                PointSourceSurfaceFiberInfiniteCylinderTissueAndDetector(),
                 FluorescenceEmissionAOfXAndYAndZSourceInfiniteCylinder(),
                 PointSourceBoundedTissue(),
-                ImageSourceOneLayerTissueROfXAndYDetector()
+                ImageSourceOneLayerTissueROfXAndYDetector(),
             };
         }
 
@@ -1229,6 +1230,99 @@ new ITissueRegion[]
                         Name = "SlantedRecessedFiber_NA0p39",
                         FinalTissueRegionIndex = 0,
                         TallySecondMoment = true
+                    }
+                }
+            );
+        }
+        #endregion
+
+        #region point source one layer Surface Fiber Infinite Cylinder Detector 
+
+        /// <summary>
+        /// Point source on multilayer with surface fiber tissue and surface
+        /// fiber detector
+        /// </summary>
+        /// <returns>An instance of the SimulationInput class</returns>
+        public static SimulationInput PointSourceSurfaceFiberInfiniteCylinderTissueAndDetector()
+        {
+            return new SimulationInput(
+                100,
+                "surface_fiber_infinite_cylinder_detector",
+                new SimulationOptions(
+                    0, // random number generator seed, -1=random seed, 0=fixed seed
+                    RandomNumberGeneratorType.MersenneTwister,
+                    AbsorptionWeightingType.Discrete,
+                    PhaseFunctionType.HenyeyGreenstein,
+                    new List<DatabaseType> { }, // databases to be written
+                    true, // track statistics
+                    0.0, // RR threshold -> no RR performed
+                    0),
+                new DirectionalPointSourceInput(
+                    new Position(0.0, 0.0, 0.0),
+                    new Direction(0.0, 0.0, 1.0),
+                    1), // 0=start in air, 1=start in tissue
+                new MultiLayerInfiniteCylinderTissueInput(
+                    new ITissueRegion[] // air-cylinder-cylinder-air
+                    {
+                        new InfiniteCylinderTissueRegion(
+                            new DoubleRange(double.NegativeInfinity, 0.0),
+                            double.NegativeInfinity,
+                            new OpticalProperties(0.0, 1e-10, 1.0, 1.0)),
+                        new InfiniteCylinderTissueRegion(
+                            new DoubleRange(0.0, 1.0),
+                            4,
+                            new OpticalProperties(0.0, 1.0, 0.8, 1.4)),
+                        new InfiniteCylinderTissueRegion(
+                            new DoubleRange(1.0, 2.0),
+                            3,
+                            new OpticalProperties(0.0, 1.0, 0.8, 1.4)),
+                        new InfiniteCylinderTissueRegion(
+                            new DoubleRange(2.0, 4.0),
+                            2,
+                            new OpticalProperties(0.0, 1e-10, 1.0, 1.0))
+                    }
+                ),
+                new List<IDetectorInput>
+                {
+                    new SurfaceFiberReflectanceInfiniteCylinderDetectorInput()
+                    {
+                        Center = new Position(0, 0, 0),
+                        Radius = 1,
+                        TallySecondMoment = true,
+                        N = 1.4,
+                        NA = 1.4,
+                        FinalTissueRegionIndex = 0,
+                        Name = "reflectOpen"
+                    },
+                    new SurfaceFiberReflectanceInfiniteCylinderDetectorInput()
+                    {
+                        Center = new Position(0, 0, 0),
+                        Radius = 1,
+                        TallySecondMoment = true,
+                        N = 1.4,
+                        FinalTissueRegionIndex = 0,
+                        NA = 0.39,
+                        Name = "reflectNA"
+                    },
+                    new SurfaceFiberTransmittanceInfiniteCylinderDetectorInput()
+                    {
+                        Center = new Position(0, 0, 2),
+                        Radius = 1,
+                        TallySecondMoment = true,
+                        N = 1.4,
+                        NA = 1.4,
+                        FinalTissueRegionIndex = 3,
+                        Name = "transmitOpen"
+                    },
+                    new SurfaceFiberTransmittanceInfiniteCylinderDetectorInput()
+                    {
+                        Center = new Position(0, 0, 2),
+                        Radius = 1,
+                        TallySecondMoment = true,
+                        N = 1.4,
+                        FinalTissueRegionIndex = 3,
+                        NA = 0.39,
+                        Name = "transmitNA"
                     }
                 }
             );

@@ -52,6 +52,30 @@ namespace Vts.MonteCarlo
         /// Surface fiber tally count
         /// </summary>
         public double SurFib_TallyCount { get { return (double)((dynamic)ResultsDictionary[_detectorResults.First(d => d.TallyType == "SurfaceFiber").Name]).TallyCount; } }
+        /// <summary>
+        /// Surface fiber
+        /// </summary>
+        public double SurFibRefInfCyl { get { return (double)((dynamic)ResultsDictionary[_detectorResults.First(d => d.TallyType == "SurfaceFiberReflectanceInfiniteCylinder").Name]).Mean; } }
+        /// <summary>
+        /// Surface fiber 2nd moment
+        /// </summary>
+        public double SurFibRefInfCyl2 { get { return (double)((dynamic)ResultsDictionary[_detectorResults.First(d => d.TallyType == "SurfaceFiberReflectanceInfiniteCylinder").Name]).SecondMoment; } }
+        /// <summary>
+        /// Surface fiber tally count
+        /// </summary>
+        public double SurFibRefInfCyl_TallyCount { get { return (double)((dynamic)ResultsDictionary[_detectorResults.First(d => d.TallyType == "SurfaceFiberReflectanceInfiniteCylinder").Name]).TallyCount; } }
+        /// <summary>
+        /// Surface fiber
+        /// </summary>
+        public double SurFibTransInfCyl { get { return (double)((dynamic)ResultsDictionary[_detectorResults.First(d => d.TallyType == "SurfaceFiberTransmittanceInfiniteCylinder").Name]).Mean; } }
+        /// <summary>
+        /// Surface fiber 2nd moment
+        /// </summary>
+        public double SurFibTransInfCyl2 { get { return (double)((dynamic)ResultsDictionary[_detectorResults.First(d => d.TallyType == "SurfaceFiberTransmittanceInfiniteCylinder").Name]).SecondMoment; } }
+        /// <summary>
+        /// Surface fiber tally count
+        /// </summary>
+        public double SurFibTransInfCyl_TallyCount { get { return (double)((dynamic)ResultsDictionary[_detectorResults.First(d => d.TallyType == "SurfaceFiberTransmittanceInfiniteCylinder").Name]).TallyCount; } }
 
         /// <summary>
         /// Diffuse Reflectance

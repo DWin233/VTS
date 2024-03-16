@@ -1,6 +1,9 @@
 ﻿using System;
+using MathNet.Numerics.Random;
+using Vts.Common;
 using Vts.MonteCarlo.PhotonData;
 using Vts.MonteCarlo.Tissues;
+using Vts.SpectralMapping;
 
 namespace Vts.MonteCarlo.VirtualBoundaries
 {
@@ -9,6 +12,7 @@ namespace Vts.MonteCarlo.VirtualBoundaries
     /// </summary>
     public class DiffuseReflectanceInfiniteCylinderVirtualBoundary : IVirtualBoundary
     {
+        private ITissue _tissue;
         /// <summary>
         /// diffuse reflectance VB
         /// </summary>
@@ -29,6 +33,7 @@ namespace Vts.MonteCarlo.VirtualBoundaries
             DetectorController = detectorController;
 
             Name = name;
+            _tissue = tissue;
         }
 
         /// <summary>
@@ -59,9 +64,29 @@ namespace Vts.MonteCarlo.VirtualBoundaries
         /// <returns>distance to VB</returns>
         public double GetDistanceToVirtualBoundary(PhotonDataPoint dp)
         {
-            const double distanceToBoundary = double.PositiveInfinity;
+            var outerCylinder = (InfiniteCylinderTissueRegion)_tissue.Regions[1];
+
+            var distanceToBoundary = double.PositiveInfinity;
             // check if VB not applied
-            return !dp.StateFlag.HasFlag(PhotonStateType.PseudoReflectedInfiniteCylinderTissueBoundary) ? distanceToBoundary : distanceToBoundary;
+            if (!dp.StateFlag.HasFlag(PhotonStateType.PseudoReflectedInfiniteCylinderTissueBoundary))
+            {
+                return distanceToBoundary;
+            }
+            // VB applies to outermost "tissue" cylinder
+            // determine location of end of ray
+            var dp2 = new Position(dp.Position.X + dp.Direction.Ux * double.PositiveInfinity,
+                dp.Position.Y + dp.Direction.Uy * double.PositiveInfinity,
+                dp.Position.Z + dp.Direction.Uz * double.PositiveInfinity);
+
+            CylinderTissueRegionToolbox.RayIntersectInfiniteCylinder(
+                    dp.Position, 
+                    dp2, 
+                    true,
+                CylinderTissueRegionAxisType.Y, 
+                outerCylinder.Center,
+                outerCylinder.Radius,
+                out distanceToBoundary);
+            return distanceToBoundary;
         }
     }
 }

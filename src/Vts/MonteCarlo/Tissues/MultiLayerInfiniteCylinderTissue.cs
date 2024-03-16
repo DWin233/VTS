@@ -128,22 +128,16 @@ namespace Vts.MonteCarlo.Tissues
         /// <returns>distance to boundary</returns>
         public virtual double GetDistanceToBoundary(Photon photon)
         {
-            // then check if inclusion boundaries are closer
-            var smallestInclusionDistance = double.PositiveInfinity;
-
-            foreach (var inclusionRegion in _cylinderRegions)
+            var currentRegionIndex = photon.CurrentRegionIndex;
+            var currentRegion = _cylinderRegions[1];
+            if (currentRegionIndex < _cylinderRegions.Count)
             {
-                inclusionRegion.RayIntersectBoundary(photon, out var distToInclusion);
-                // first check that photon isn't sitting on boundary of one of the inclusions
-                // note 1e-9 was found by trial and error using unit tests to verify selection
-                // if you change value, need to update InclusionTissueRegion.ContainsPosition eps
-                if (distToInclusion > 1e-9 && distToInclusion < smallestInclusionDistance)
-                {
-                    smallestInclusionDistance = distToInclusion;
-                }
+                currentRegion = _cylinderRegions[currentRegionIndex];
             }
 
-            return smallestInclusionDistance;
+            currentRegion.RayIntersectBoundary(photon, out var distanceToBoundary);
+
+            return distanceToBoundary;
         }
 
         /// <summary>
@@ -182,11 +176,10 @@ namespace Vts.MonteCarlo.Tissues
         public PhotonStateType GetPhotonDataPointStateOnExit(Position position)
         {
             // this code assumes that the first and last cylinder layer is air
-            if (_cylinderRegions[0].OnBoundary(position)) 
-                return PhotonStateType.PseudoReflectedTissueBoundary;
-            if (_cylinderRegions.Last().OnBoundary(position)) 
-                return PhotonStateType.PseudoTransmittedTissueBoundary;
-            return PhotonStateType.None;
+            if (_cylinderRegions[1].OnBoundary(position)) 
+                return PhotonStateType.PseudoReflectedInfiniteCylinderTissueBoundary;
+            return _cylinderRegions[^2].OnBoundary(position) ? 
+                PhotonStateType.PseudoTransmittedInfiniteCylinderTissueBoundary : PhotonStateType.None;
         }
 
         /// <summary>

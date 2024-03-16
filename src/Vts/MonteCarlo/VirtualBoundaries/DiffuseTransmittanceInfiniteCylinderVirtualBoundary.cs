@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Vts.Common;
 using Vts.MonteCarlo.PhotonData;
 using Vts.MonteCarlo.Tissues;
 
@@ -10,6 +11,7 @@ namespace Vts.MonteCarlo.VirtualBoundaries
     /// </summary>
     public class DiffuseTransmittanceInfiniteCylinderVirtualBoundary : IVirtualBoundary
     {
+        private ITissue _tissue;
         /// <summary>
         /// diffuse reflectance VB
         /// </summary>
@@ -30,6 +32,7 @@ namespace Vts.MonteCarlo.VirtualBoundaries
             DetectorController = detectorController;
 
             Name = name;
+            _tissue = tissue;
         }
 
         /// <summary>
@@ -60,9 +63,29 @@ namespace Vts.MonteCarlo.VirtualBoundaries
         /// <returns>distance to VB</returns>
         public double GetDistanceToVirtualBoundary(PhotonDataPoint dp)
         {
-            const double distanceToBoundary = double.PositiveInfinity;
+            var innerCylinder = (InfiniteCylinderTissueRegion)_tissue.Regions[^2];
+
+            var distanceToBoundary = double.PositiveInfinity;
             // check if VB not applied
-            return !dp.StateFlag.HasFlag(PhotonStateType.PseudoTransmittedInfiniteCylinderTissueBoundary) ? distanceToBoundary : distanceToBoundary;
+            if (!dp.StateFlag.HasFlag(PhotonStateType.PseudoTransmittedInfiniteCylinderTissueBoundary))
+            {
+                return distanceToBoundary;
+            }
+            // VB applies to outermost "tissue" cylinder
+            // determine location of end of ray
+            var dp2 = new Position(dp.Position.X + dp.Direction.Ux * double.PositiveInfinity,
+                dp.Position.Y + dp.Direction.Uy * double.PositiveInfinity,
+                dp.Position.Z + dp.Direction.Uz * double.PositiveInfinity);
+
+            CylinderTissueRegionToolbox.RayIntersectInfiniteCylinder(
+                dp.Position,
+                dp2,
+                true,
+                CylinderTissueRegionAxisType.Y,
+                innerCylinder.Center,
+                innerCylinder.Radius,
+                out distanceToBoundary);
+            return distanceToBoundary;
         }
     }
 }
