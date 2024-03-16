@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using Vts.Common;
 using Vts.MonteCarlo.DataStructuresValidation;
-using Vts.MonteCarlo.Interfaces;
 using Vts.MonteCarlo.Sources;
 using Vts.MonteCarlo.Tissues;
 
@@ -96,6 +95,8 @@ namespace Vts.MonteCarlo
                 MultiConcentricInfiniteCylinderTissueInput => MultiConcentricInfiniteCylinderTissueInputValidation
                     .ValidateInput(tissueInput),
                 BoundingCylinderTissueInput => BoundingCylinderTissueInputValidation.ValidateInput(tissueInput),
+                MultiLayerInfiniteCylinderTissueInput => MultiLayerInfiniteCylinderTissueInputValidation.ValidateInput(
+                    tissueInput),
                 _ => new ValidationResult(true, "Tissue input must be valid",
                     "Validation skipped for tissue input " + tissueInput + ". No matching validation rules were found.")
             };

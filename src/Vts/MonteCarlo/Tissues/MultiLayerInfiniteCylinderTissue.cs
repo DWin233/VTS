@@ -35,11 +35,11 @@ namespace Vts.MonteCarlo.Tissues
                         new OpticalProperties( 0.0, 1e-10, 1.0, 1.0)),
                     new InfiniteCylinderTissueRegion(
                         new DoubleRange(0.0, 10.0),
-                        10,
+                        30,
                         new OpticalProperties(0.0, 1.0, 0.8, 1.4)),
                     new InfiniteCylinderTissueRegion(
                         new DoubleRange(10.0, 20),
-                        10,
+                        20,
                         new OpticalProperties(0.0, 1e-10, 1.0, 1.0))
                 })
         {
