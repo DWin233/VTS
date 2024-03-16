@@ -40,5 +40,13 @@ namespace Vts.MonteCarlo
         /// Virtual boundary used to capture photons if leave this lateral boundary
         /// </summary>
         BoundingVolume,
+        /// <summary>
+        /// Diffuse reflectance off an infinite cylinder attach to this virtual 
+        /// </summary>
+        DiffuseReflectanceInfiniteCylinder,
+        /// <summary>
+        /// Diffuse transmittance off an infinite cylinder attach to this virtual 
+        /// </summary>
+        DiffuseTransmittanceInfiniteCylinder,
     }
 }

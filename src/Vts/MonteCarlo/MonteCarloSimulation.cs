@@ -368,6 +368,8 @@ namespace Vts.MonteCarlo
                     VirtualBoundaryType.pMCDiffuseReflectance => Input.DetectorInputs.Where(d => d.TallyDetails.IspMCReflectanceTally).ToList(),
                     VirtualBoundaryType.pMCDiffuseTransmittance => Input.DetectorInputs.Where(d => d.TallyDetails.IspMCTransmittanceTally).ToList(),
                     VirtualBoundaryType.BoundingVolume => Input.DetectorInputs.Where(d => d.TallyDetails.IsLateralBoundingVolumeTally).ToList(),
+                    VirtualBoundaryType.DiffuseReflectanceInfiniteCylinder => Input.DetectorInputs.Where(d => d.TallyDetails.IsReflectanceInfiniteCylinderTally).ToList(),
+                    VirtualBoundaryType.DiffuseTransmittanceInfiniteCylinder => Input.DetectorInputs.Where(d => d.TallyDetails.IsTransmittanceInfiniteCylinderTally).ToList(),
                     _ => throw new ArgumentOutOfRangeException(
                                                 "Virtual boundary type not recognized: " + vbType),
                 };

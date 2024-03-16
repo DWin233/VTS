@@ -5,6 +5,7 @@ namespace Vts.MonteCarlo
     /// <summary>
     /// PhotonStateType is a bitmap of Photon.StateFlag.  Combinations of bits indicate
     /// the current state of the photon.  These states communicate what to do with the photon.
+    /// Note!  Do not modify values of existing values or unit tests will fail
     /// ref: http://www.codeproject.com/Articles/37921/Enums-Flags-and-Csharp-Oh-my-bad-pun.aspx
     /// or http://stackoverflow.com/questions/93744/most-common-c-bitwise-operations
     ///     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
@@ -61,6 +62,14 @@ namespace Vts.MonteCarlo
         /// photon pseudo-collision at bounding volume boundary
         /// </summary>
         PseudoBoundingVolumeTissueBoundary = 0x200,
+        /// <summary>
+        /// photon pseudo-collision at reflected off outermost infinite cylinder boundary
+        /// </summary>
+        PseudoReflectedInfiniteCylinderTissueBoundary = 0x400,
+        /// <summary>
+        /// photon pseudo-collision at transmitted off innermost infinite cylinder boundary
+        /// </summary>
+        PseudoTransmittedInfiniteCylinderTissueBoundary = 0x800,
 
         // virtual boundary flags, can we 1-1 map to virtualBoundary "Name"
         // move up to 16th position
@@ -89,5 +98,13 @@ namespace Vts.MonteCarlo
         /// photon pseudo-collision at Lateral Bounding Virtual Boundary (VB)
         /// </summary>
         PseudoLateralBoundingVirtualBoundary = 0x110000,
+        /// <summary>
+        /// photon pseudo-collision at DiffuseReflectanceInfiniteCylinder VB
+        /// </summary>
+        PseudoDiffuseReflectanceInfiniteCylinderVirtualBoundary = 0x100002,
+        /// <summary>
+        /// photon pseudo-collision at DiffuseTransmittanceInfiniteCylinder VB
+        /// </summary>
+        PseudoDiffuseTransmittanceInfiniteCylinderVirtualBoundary = 0x100004,
     }
 }

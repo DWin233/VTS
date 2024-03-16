@@ -29,6 +29,15 @@
         /// Boolean identifying all perturbation MC transmittance tallies
         /// </summary>
         public bool IspMCTransmittanceTally { get; set; }
+
+        /// <summary>
+        /// Boolean identifying all reflectance off infinite cylinder tissue tallies
+        /// </summary>
+        public bool IsReflectanceInfiniteCylinderTally { get; set; }
+        /// <summary>
+        /// Boolean identifying all transmittance inside infinite cylinder tissue tallies
+        /// </summary>
+        public bool IsTransmittanceInfiniteCylinderTally { get; set; }
         /// <summary>
         /// Boolean identifying all bounding volume tallies
         /// </summary>

@@ -22,6 +22,8 @@ namespace Vts.MonteCarlo.Extensions
                 VirtualBoundaryType.pMCDiffuseReflectance => true,
                 VirtualBoundaryType.pMCDiffuseTransmittance => true,
                 VirtualBoundaryType.InternalSurface => true,
+                VirtualBoundaryType.DiffuseReflectanceInfiniteCylinder => true,
+                VirtualBoundaryType.DiffuseTransmittanceInfiniteCylinder => true,
                 VirtualBoundaryType.GenericVolumeBoundary => false,
                 VirtualBoundaryType.BoundingVolume => false,
                 _ => throw new ArgumentOutOfRangeException("Virtual Boundary type not recognized: " +
@@ -45,6 +47,8 @@ namespace Vts.MonteCarlo.Extensions
                 VirtualBoundaryType.InternalSurface => false,
                 VirtualBoundaryType.pMCDiffuseReflectance => false,
                 VirtualBoundaryType.pMCDiffuseTransmittance => false,
+                VirtualBoundaryType.DiffuseReflectanceInfiniteCylinder => false,
+                VirtualBoundaryType.DiffuseTransmittanceInfiniteCylinder => false,
                 _ => throw new ArgumentOutOfRangeException("Virtual Boundary type not recognized: " +
                                                            virtualBoundaryType)
             };
@@ -60,12 +64,14 @@ namespace Vts.MonteCarlo.Extensions
             {
                 VirtualBoundaryType.DiffuseReflectance => true,
                 VirtualBoundaryType.pMCDiffuseReflectance => true,
+                VirtualBoundaryType.DiffuseReflectanceInfiniteCylinder => true,
                 VirtualBoundaryType.DiffuseTransmittance => false,
                 VirtualBoundaryType.SpecularReflectance => false,
                 VirtualBoundaryType.GenericVolumeBoundary => false,
                 VirtualBoundaryType.InternalSurface => false,
                 VirtualBoundaryType.pMCDiffuseTransmittance => false,
                 VirtualBoundaryType.BoundingVolume => false,
+                VirtualBoundaryType.DiffuseTransmittanceInfiniteCylinder => false,
                 _ => throw new ArgumentOutOfRangeException("Virtual Boundary type not recognized: " +
                                                            virtualBoundaryType)
             };
@@ -81,12 +87,14 @@ namespace Vts.MonteCarlo.Extensions
             {
                 VirtualBoundaryType.DiffuseTransmittance => true,
                 VirtualBoundaryType.pMCDiffuseTransmittance => true,
+                VirtualBoundaryType.DiffuseTransmittanceInfiniteCylinder => true,
                 VirtualBoundaryType.DiffuseReflectance => false,
                 VirtualBoundaryType.SpecularReflectance => false,
                 VirtualBoundaryType.GenericVolumeBoundary => false,
                 VirtualBoundaryType.InternalSurface => false,
                 VirtualBoundaryType.pMCDiffuseReflectance => false,
                 VirtualBoundaryType.BoundingVolume => false,
+                VirtualBoundaryType.DiffuseReflectanceInfiniteCylinder => false,
                 _ => throw new ArgumentOutOfRangeException("Virtual Boundary type not recognized: " +
                                                            virtualBoundaryType)
             };
@@ -108,6 +116,8 @@ namespace Vts.MonteCarlo.Extensions
                 VirtualBoundaryType.pMCDiffuseReflectance => false,
                 VirtualBoundaryType.pMCDiffuseTransmittance => false,
                 VirtualBoundaryType.BoundingVolume => false,
+                VirtualBoundaryType.DiffuseReflectanceInfiniteCylinder => false,
+                VirtualBoundaryType.DiffuseTransmittanceInfiniteCylinder => false,
                 _ => throw new ArgumentOutOfRangeException("Virtual Boundary type not recognized: " +
                                                            virtualBoundaryType)
             };
@@ -129,6 +139,8 @@ namespace Vts.MonteCarlo.Extensions
                 VirtualBoundaryType.pMCDiffuseReflectance => false,
                 VirtualBoundaryType.pMCDiffuseTransmittance => false,
                 VirtualBoundaryType.BoundingVolume => false,
+                VirtualBoundaryType.DiffuseReflectanceInfiniteCylinder => false,
+                VirtualBoundaryType.DiffuseTransmittanceInfiniteCylinder => false,
                 _ => throw new ArgumentOutOfRangeException("Virtual Boundary type not recognized: " +
                                                            virtualBoundaryType)
             };
@@ -151,6 +163,8 @@ namespace Vts.MonteCarlo.Extensions
                 VirtualBoundaryType.pMCDiffuseReflectance => false,
                 VirtualBoundaryType.pMCDiffuseTransmittance => false,
                 VirtualBoundaryType.BoundingVolume => false,
+                VirtualBoundaryType.DiffuseReflectanceInfiniteCylinder => false,
+                VirtualBoundaryType.DiffuseTransmittanceInfiniteCylinder => false,
                 _ => throw new ArgumentOutOfRangeException("Virtual Boundary type not recognized: " +
                                                            virtualBoundaryType)
             };
@@ -172,6 +186,8 @@ namespace Vts.MonteCarlo.Extensions
                 VirtualBoundaryType.DiffuseTransmittance => false,
                 VirtualBoundaryType.SpecularReflectance => false,
                 VirtualBoundaryType.InternalSurface => false,
+                VirtualBoundaryType.DiffuseReflectanceInfiniteCylinder => false,
+                VirtualBoundaryType.DiffuseTransmittanceInfiniteCylinder => false,
                 _ => throw new ArgumentOutOfRangeException("Virtual Boundary type not recognized: " +
                                                            virtualBoundaryType)
             };

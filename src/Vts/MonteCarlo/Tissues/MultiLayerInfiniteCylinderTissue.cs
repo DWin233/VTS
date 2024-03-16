@@ -7,7 +7,7 @@ namespace Vts.MonteCarlo.Tissues
 {
     /// <summary>
     /// Implements ITissueInput.  Defines input to MultiLayerInfiniteCylinderTissue class.
-    /// This assumes air is above and below layered set of concentric infinite cylinders
+    /// This assumes air is above and inside layered set of concentric infinite cylinders
     /// </summary>
     public class MultiLayerInfiniteCylinderTissueInput : TissueInput, ITissueInput
     {
@@ -69,9 +69,8 @@ namespace Vts.MonteCarlo.Tissues
     }
 
     /// <summary>
-    /// Implements ITissue.  Defines tissue geometries comprised of layers
-    /// (including homogenous with air layers above and below).  Layers are infinite along
-    /// x- and y- axes.
+    /// Implements ITissue.  Defines tissue geometries comprised of layers of infinite cylinders
+    /// (including homogenous with air layer above and inside). 
     /// </summary>
     public class MultiLayerInfiniteCylinderTissue : TissueBase, ITissue
     {
@@ -82,7 +81,7 @@ namespace Vts.MonteCarlo.Tissues
         /// Creates an instance of a MultiLayerInfiniteCylinderTissue
         /// </summary>
         /// <param name="regions">list of tissue regions comprising tissue</param>
-        /// <remarks>air above and below tissue needs to be specified for a slab geometry</remarks>
+        /// <remarks>air above and inside tissue needs to be specified for a concentric infinite cylinders</remarks>
         public MultiLayerInfiniteCylinderTissue(
             IList<ITissueRegion> regions)
             : base(regions)
