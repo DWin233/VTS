@@ -36,8 +36,8 @@ namespace Vts.MonteCarlo.Tissues
             Radius = radius;
             RegionOP = op;
             // determine Center from radius and zRange
-            Center = double.IsNegativeInfinity(radius) ? 
-                new Position(0, 0, double.NegativeInfinity) : 
+            Center = double.IsPositiveInfinity(radius) ? 
+                new Position(0, 0, double.PositiveInfinity) : 
                 new Position(0, 0, zRange.Start + radius);
         }
 

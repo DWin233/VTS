@@ -31,7 +31,7 @@ namespace Vts.MonteCarlo.Tissues
                 { 
                     new InfiniteCylinderTissueRegion(
                         new DoubleRange(double.NegativeInfinity, 0.0),
-                        double.NegativeInfinity,
+                        double.PositiveInfinity,
                         new OpticalProperties( 0.0, 1e-10, 1.0, 1.0)),
                     new InfiniteCylinderTissueRegion(
                         new DoubleRange(0.0, 10.0),
@@ -70,7 +70,8 @@ namespace Vts.MonteCarlo.Tissues
 
     /// <summary>
     /// Implements ITissue.  Defines tissue geometries comprised of layers of infinite cylinders
-    /// (including homogenous with air layer above and inside). 
+    /// (including homogenous with air layer above and inside).
+    /// Note: boundaries of individual cylinders are needed to process GetDistanceToBoundary correctly.
     /// </summary>
     public class MultiLayerInfiniteCylinderTissue : TissueBase, ITissue
     {
@@ -122,22 +123,35 @@ namespace Vts.MonteCarlo.Tissues
         }
         
         /// <summary>
-        /// Finds the distance to the next boundary and independent of hitting it
+        /// Finds the distance to the boundary and independent of hitting it
         /// </summary>
         /// <param name="photon">photon</param>
         /// <returns>distance to boundary</returns>
         public virtual double GetDistanceToBoundary(Photon photon)
         {
-            var currentRegionIndex = photon.CurrentRegionIndex;
-            var currentRegion = _cylinderRegions[1];
-            if (currentRegionIndex < _cylinderRegions.Count)
+            if (photon.CurrentRegionIndex == 0)
             {
-                currentRegion = _cylinderRegions[currentRegionIndex];
+                _cylinderRegions[1].RayIntersectBoundary(photon, out var distToNextCylinder);
+                return distToNextCylinder;
             }
 
-            currentRegion.RayIntersectBoundary(photon, out var distanceToBoundary);
+            // check which cylinder is closest
+            var smallestDistance = double.PositiveInfinity;
+            //// set photon step length to large number because we just want distance not actual hit
+            //photon.S = _cylinderRegions[1].Radius;
 
-            return distanceToBoundary;
+            foreach (var cylinderRegion in _cylinderRegions.Skip(1)) // skip air above
+            {
+                cylinderRegion.RayIntersectBoundary(photon, out var distToNextCylinder);
+                // first check that photon isn't sitting on boundary of one of the inclusions
+                // note 1e-9 was found by trial and error using unit tests to verify selection
+                // if you change value, need to update InclusionTissueRegion.ContainsPosition eps
+                if (distToNextCylinder > 1e-9 && distToNextCylinder < smallestDistance)
+                {
+                    smallestDistance = distToNextCylinder;
+                }
+            }
+            return smallestDistance;
         }
 
         /// <summary>
@@ -163,6 +177,7 @@ namespace Vts.MonteCarlo.Tissues
             var surfaceNormal = _cylinderRegions[currentCylinderIndex].SurfaceNormal(photon.DP.Position);
             var currentDirDotNormal = Direction.GetDotProduct(photon.DP.Direction, surfaceNormal);
 
+            // code has to take into account bottom of layered infinite cylinders
             return currentDirDotNormal > 0
                     ? photon.CurrentRegionIndex - 1
                     : photon.CurrentRegionIndex + 1;
@@ -194,7 +209,7 @@ namespace Vts.MonteCarlo.Tissues
         {
             var currentIndex = 0;
             // on boundary of an inclusion, check which one
-            for (var i = 0; i < _cylinderRegions.Count; i++)
+            for (var i = 0; i < _cylinderRegions.Count - 1; i++)
             {
                 if (_cylinderRegions[i].ContainsPosition(currentPosition)) currentIndex = i;
             }
@@ -210,7 +225,7 @@ namespace Vts.MonteCarlo.Tissues
                 if (currentPosition.Z < _center.Z) neighborIndex = currentIndex - 1;
                 else neighborIndex = currentIndex + 1;
             }
-            
+
             if (_cylinderRegions[currentIndex].RegionOP.N == _cylinderRegions[neighborIndex].RegionOP.N)
             {
                 return currentDirection;  // no refractive index mismatch

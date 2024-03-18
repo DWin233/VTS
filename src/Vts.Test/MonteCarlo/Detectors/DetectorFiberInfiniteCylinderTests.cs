@@ -44,27 +44,43 @@ namespace Vts.Test.MonteCarlo.Detectors
                 0.0, // RR threshold -> 0 = no RR performed
                 0);
             _source = new DirectionalPointSourceInput(
-                     new Position(0.0, 0.0, 0.0),
+                     new Position(0.01, 0.0, 0.0),
                      new Direction(0.0, 0.0, 1.0),
-                     1);
+                     0);
 
             _tissue = new MultiLayerInfiniteCylinderTissueInput(
                 new ITissueRegion[] // air-cylinder-cylinder-air
                 {
+                    //new InfiniteCylinderTissueRegion(
+                    //    new DoubleRange(double.NegativeInfinity, 0.0),
+                    //    double.PositiveInfinity,
+                    //    new OpticalProperties(0.0, 1e-10, 1.0, 1.0)),
+                    //new InfiniteCylinderTissueRegion(
+                    //    new DoubleRange(0.0, 1.0),
+                    //    4,
+                    //    new OpticalProperties(0.01, 1.0, 0.8, 1.4)),
+                    //new InfiniteCylinderTissueRegion(
+                    //    new DoubleRange(1.0, 2.0),
+                    //    3,
+                    //    new OpticalProperties(0.01, 1.0, 0.8, 1.4)),
+                    //new InfiniteCylinderTissueRegion(
+                    //    new DoubleRange(2.0, 4.0),
+                    //    2,
+                    //    new OpticalProperties(0.0, 1e-10, 1.0, 1.0))
                     new InfiniteCylinderTissueRegion(
-                        new DoubleRange(double.NegativeInfinity, 0.0),
-                        double.NegativeInfinity,
-                        new OpticalProperties(0.0, 1e-10, 1.0, 1.0)),
+                    new Position(0,0,4),
+                    double.PositiveInfinity,
+                    new OpticalProperties(0.0, 1e-10, 1.0, 1.0)),
                     new InfiniteCylinderTissueRegion(
-                        new DoubleRange(0.0, 1.0),
+                        new Position(0,0,4),
                         4,
-                        new OpticalProperties(0.0, 1.0, 0.8, 1.4)),
+                        new OpticalProperties(0.01, 1.0, 0.8, 1.4)),
                     new InfiniteCylinderTissueRegion(
-                        new DoubleRange(1.0, 2.0),
+                        new Position(0,0,4),
                         3,
-                        new OpticalProperties(0.0, 1.0, 0.8, 1.4)),
+                        new OpticalProperties(0.01, 1.0, 0.8, 1.4)),
                     new InfiniteCylinderTissueRegion(
-                        new DoubleRange(2.0, 4.0),
+                        new Position(0,0, 4),
                         2,
                         new OpticalProperties(0.0, 1e-10, 1.0, 1.0))
                 });

@@ -7,6 +7,7 @@ using Vts.IO;
 using Vts.MonteCarlo.Controllers;
 using Vts.MonteCarlo.Extensions;
 using Vts.MonteCarlo.Factories;
+using Vts.MonteCarlo.Tissues;
 #if BENCHMARK
 using BenchmarkDotNet.Attributes;
 #endif
@@ -376,10 +377,21 @@ namespace Vts.MonteCarlo
 
                 // make sure VB Controller has at least diffuse reflectance and diffuse transmittance
                 // may change this in future if tissue OnDomainBoundary changes
-                if (!detectorInputs.Any() &&
-                    vbType != VirtualBoundaryType.DiffuseReflectance &&
-                    vbType != VirtualBoundaryType.DiffuseTransmittance && 
-                    dbVirtualBoundaries.All(vb => vb != vbType)) continue;
+                if (_tissue is MultiLayerInfiniteCylinderTissue)
+                {
+                    if (!detectorInputs.Any() &&
+                        vbType != VirtualBoundaryType.DiffuseReflectanceInfiniteCylinder &&
+                        vbType != VirtualBoundaryType.DiffuseTransmittanceInfiniteCylinder &&
+                        dbVirtualBoundaries.All(vb => vb != vbType)) continue;
+                }
+                else
+                {
+                    if (!detectorInputs.Any() &&
+                        vbType != VirtualBoundaryType.DiffuseReflectance &&
+                        vbType != VirtualBoundaryType.DiffuseTransmittance &&
+                        dbVirtualBoundaries.All(vb => vb != vbType)) continue;
+
+                }
                 var detectors = DetectorFactory.GetDetectors(detectorInputs, _tissue, Rng);
                 var detectorController = DetectorControllerFactory.GetDetectorController(vbType, detectors, _tissue);
 

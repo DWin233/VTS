@@ -63,7 +63,7 @@ namespace Vts.MonteCarlo.VirtualBoundaries
         /// <returns>distance to VB</returns>
         public double GetDistanceToVirtualBoundary(PhotonDataPoint dp)
         {
-            var innerCylinder = (InfiniteCylinderTissueRegion)_tissue.Regions[^2];
+            var innerCylinder = (InfiniteCylinderTissueRegion)_tissue.Regions[^1];
 
             var distanceToBoundary = double.PositiveInfinity;
             // check if VB not applied

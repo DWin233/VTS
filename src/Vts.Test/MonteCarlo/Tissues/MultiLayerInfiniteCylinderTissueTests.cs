@@ -25,7 +25,7 @@ namespace Vts.Test.MonteCarlo.Tissues
                 {
                     new InfiniteCylinderTissueRegion(
                         new DoubleRange(double.NegativeInfinity, 0.0),
-                        double.NegativeInfinity,
+                        double.PositiveInfinity,
                         new OpticalProperties(0.0, 1e-10, 1.0, 1.0)),
                     new InfiniteCylinderTissueRegion(
                         new DoubleRange(0.0, 5.0),
