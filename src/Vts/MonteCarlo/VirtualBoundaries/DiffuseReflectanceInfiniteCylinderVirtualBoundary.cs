@@ -12,7 +12,8 @@ namespace Vts.MonteCarlo.VirtualBoundaries
     /// </summary>
     public class DiffuseReflectanceInfiniteCylinderVirtualBoundary : IVirtualBoundary
     {
-        private ITissue _tissue;
+        private readonly ITissue _tissue;
+        private readonly ITissueRegion _airAroundOuterCylinder;
         /// <summary>
         /// diffuse reflectance VB
         /// </summary>
@@ -21,11 +22,11 @@ namespace Vts.MonteCarlo.VirtualBoundaries
         /// <param name="name">string name</param>
         public DiffuseReflectanceInfiniteCylinderVirtualBoundary(ITissue tissue, IDetectorController detectorController, string name)
         {
-            var airAroundOuterCylinder = (InfiniteCylinderTissueRegion)tissue.Regions[0];
+            _airAroundOuterCylinder = (InfiniteCylinderTissueRegion)tissue.Regions[0];
 
             WillHitBoundary = dp =>
                 dp.StateFlag.HasFlag(PhotonStateType.PseudoReflectedInfiniteCylinderTissueBoundary) &&
-                airAroundOuterCylinder.ContainsPosition(dp.Position);
+                _airAroundOuterCylinder.ContainsPosition(dp.Position);
 
             VirtualBoundaryType = VirtualBoundaryType.DiffuseReflectanceInfiniteCylinder;
             PhotonStateType = PhotonStateType.PseudoDiffuseReflectanceInfiniteCylinderVirtualBoundary;
@@ -72,11 +73,15 @@ namespace Vts.MonteCarlo.VirtualBoundaries
             {
                 return distanceToBoundary;
             }
+            // check if in innermost air cylinder 
+            if (_airAroundOuterCylinder.ContainsPosition(dp.Position)) return 0.0;
+
             // VB applies to outermost "tissue" cylinder
-            // determine location of end of ray
-            var dp2 = new Position(dp.Position.X + dp.Direction.Ux * double.PositiveInfinity,
-                dp.Position.Y + dp.Direction.Uy * double.PositiveInfinity,
-                dp.Position.Z + dp.Direction.Uz * double.PositiveInfinity);
+            // determine location of end of long ray
+            var S = outerCylinder.Radius;
+            var dp2 = new Position(dp.Position.X + dp.Direction.Ux * S,
+                dp.Position.Y + dp.Direction.Uy * S,
+                dp.Position.Z + dp.Direction.Uz * S);
 
             CylinderTissueRegionToolbox.RayIntersectInfiniteCylinder(
                     dp.Position, 

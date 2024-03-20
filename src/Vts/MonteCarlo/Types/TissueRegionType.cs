@@ -22,8 +22,10 @@ namespace Vts.MonteCarlo
             "Cylinder",
             // capless cylinder tissue region
             "CaplessCylinder",
-            // infinite cylinder tissue region
+            // infinite cylinder tissue region (solid cylinder)
             "InfiniteCylinder",
+            // finite extent infinite cylinder tissue region (tube)
+            "LayerInfiniteCylinder",
             // surface fiber tissue region 
             "SurfaceFiber"
         };

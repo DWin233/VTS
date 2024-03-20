@@ -22,7 +22,7 @@ namespace Vts.Test.MonteCarlo.Detectors
         private ITissueInput _tissue;
         private IList<IDetectorInput> _detectors;
         private SimulationOutput _output;
-        private const double DetectorRadius = 10; // debug set to 10
+        private const double DetectorRadius = 1; // debug set to 10
 
         /// <summary>
         /// Setup input to the MC for a homogeneous one layer tissue with 
@@ -68,20 +68,20 @@ namespace Vts.Test.MonteCarlo.Detectors
                     //    2,
                     //    new OpticalProperties(0.0, 1e-10, 1.0, 1.0))
                     new InfiniteCylinderTissueRegion(
-                    new Position(0,0,4),
+                    new Position(0,0,10),
                     double.PositiveInfinity,
                     new OpticalProperties(0.0, 1e-10, 1.0, 1.0)),
                     new InfiniteCylinderTissueRegion(
-                        new Position(0,0,4),
-                        4,
-                        new OpticalProperties(0.01, 1.0, 0.8, 1.4)),
+                        new Position(0,0,20),
+                        20,
+                        new OpticalProperties(0.1, 1.0, 0.8, 1.4)),
                     new InfiniteCylinderTissueRegion(
-                        new Position(0,0,4),
-                        3,
-                        new OpticalProperties(0.01, 1.0, 0.8, 1.4)),
+                        new Position(0,0,20),
+                        15,
+                        new OpticalProperties(0.1, 1.0, 0.8, 1.4)),
                     new InfiniteCylinderTissueRegion(
-                        new Position(0,0, 4),
-                        2,
+                        new Position(0,0, 20),
+                        10,
                         new OpticalProperties(0.0, 1e-10, 1.0, 1.0))
                 });
 
@@ -99,7 +99,7 @@ namespace Vts.Test.MonteCarlo.Detectors
                 },
                 new SurfaceFiberReflectanceInfiniteCylinderDetectorInput()
                 {
-                    Center = new Position(0, 0, 2), 
+                    Center = new Position(0, 0, 0), 
                     Radius = DetectorRadius, 
                     TallySecondMoment = true,
                     N = 1.4,
@@ -109,7 +109,7 @@ namespace Vts.Test.MonteCarlo.Detectors
                 },
                 new SurfaceFiberTransmittanceInfiniteCylinderDetectorInput()
                 {
-                    Center = new Position(0, 0, 2),
+                    Center = new Position(0, 0, 10),
                     Radius = DetectorRadius,
                     TallySecondMoment = true,
                     N = 1.4,
@@ -119,7 +119,7 @@ namespace Vts.Test.MonteCarlo.Detectors
                 },
                 new SurfaceFiberTransmittanceInfiniteCylinderDetectorInput()
                 {
-                    Center = new Position(0, 0, 0),
+                    Center = new Position(0, 0, 10),
                     Radius = DetectorRadius,
                     TallySecondMoment = true,
                     N = 1.4,

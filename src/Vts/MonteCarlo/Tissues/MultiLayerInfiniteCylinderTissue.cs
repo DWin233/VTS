@@ -77,6 +77,7 @@ namespace Vts.MonteCarlo.Tissues
     {
         private readonly IList<InfiniteCylinderTissueRegion> _cylinderRegions;
         private readonly Position _center;
+        private bool _reflectanceBoundary, _transmittanceBoundary;
 
         /// <summary>
         /// Creates an instance of a MultiLayerInfiniteCylinderTissue
@@ -137,8 +138,6 @@ namespace Vts.MonteCarlo.Tissues
 
             // check which cylinder is closest
             var smallestDistance = double.PositiveInfinity;
-            //// set photon step length to large number because we just want distance not actual hit
-            //photon.S = _cylinderRegions[1].Radius;
 
             foreach (var cylinderRegion in _cylinderRegions.Skip(1)) // skip air above
             {
@@ -162,8 +161,33 @@ namespace Vts.MonteCarlo.Tissues
         public virtual bool OnDomainBoundary(Position position)
         {
             // this code assumes that the first and last cylinder layer is air
-            return _cylinderRegions[0].OnBoundary(position)
-                   || _cylinderRegions.Last().OnBoundary(position);
+            // pulled this out of InfiniteCylinderRegion because need _onBoundary to be
+            // true and ContainsPosition to be false which is not a case
+            // CKH not sure I like how this is communicating to GetPhotonStateOnExit
+            _reflectanceBoundary = false;
+            _transmittanceBoundary = false;
+
+            var reflectanceBoundary = _cylinderRegions[1];
+            var deltaR = Math.Sqrt((position.X - reflectanceBoundary.Center.X) * 
+                                   (position.X - reflectanceBoundary.Center.X) +
+                                   (position.Z - reflectanceBoundary.Center.Z) * 
+                                   (position.Z - reflectanceBoundary.Center.Z)) - 
+                                   reflectanceBoundary.Radius;
+            if (deltaR is > -1e-9 and < 1e-9)
+            {
+                _reflectanceBoundary = true;
+                return true;
+            }
+            var transmittanceBoundary = _cylinderRegions[^1];
+            deltaR = Math.Sqrt((position.X - reflectanceBoundary.Center.X) *
+                                   (position.X - transmittanceBoundary.Center.X) +
+                                   (position.Z - transmittanceBoundary.Center.Z) *
+                                   (position.Z - transmittanceBoundary.Center.Z)) -
+                         transmittanceBoundary.Radius;
+            if (deltaR is <= -1e-9 or >= 1e-9) return false;
+            _transmittanceBoundary = true;
+            return true;
+
         }
 
         /// <summary>
@@ -176,11 +200,20 @@ namespace Vts.MonteCarlo.Tissues
             var currentCylinderIndex = GetRegionIndex(photon.DP.Position);
             var surfaceNormal = _cylinderRegions[currentCylinderIndex].SurfaceNormal(photon.DP.Position);
             var currentDirDotNormal = Direction.GetDotProduct(photon.DP.Direction, surfaceNormal);
+            int index;
+            // code has to take into account air at bottom of layered infinite cylinders
+            if (currentDirDotNormal > 0)
+            {
+                index = photon.CurrentRegionIndex - 1;
+                if (index < 0) index = 0;
+            }
+            else
+            {
+                index = photon.CurrentRegionIndex + 1;
+                if (index > _cylinderRegions.Count - 1) index = _cylinderRegions.Count - 1;
+            }
 
-            // code has to take into account bottom of layered infinite cylinders
-            return currentDirDotNormal > 0
-                    ? photon.CurrentRegionIndex - 1
-                    : photon.CurrentRegionIndex + 1;
+            return index;
         }
 
         /// <summary>
@@ -191,9 +224,9 @@ namespace Vts.MonteCarlo.Tissues
         public PhotonStateType GetPhotonDataPointStateOnExit(Position position)
         {
             // this code assumes that the first and last cylinder layer is air
-            if (_cylinderRegions[1].OnBoundary(position)) 
+            if (_reflectanceBoundary) 
                 return PhotonStateType.PseudoReflectedInfiniteCylinderTissueBoundary;
-            return _cylinderRegions[^2].OnBoundary(position) ? 
+            return _transmittanceBoundary ? 
                 PhotonStateType.PseudoTransmittedInfiniteCylinderTissueBoundary : PhotonStateType.None;
         }
 
