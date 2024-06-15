@@ -49,7 +49,7 @@ namespace Vts.MonteCarlo
                     PhotonStateType.Alive);
 
             History = new PhotonHistory(tissue.Regions.Count);
-            History.AddDPToHistory(DP);  // add initial data point
+            History.AddDPToHistory(DP);  // History 修改, add initial data point
             S = 0.0;
             SLeft = 0.0;        
             CurrentRegionIndex = currentTissueRegionIndex;
@@ -171,7 +171,7 @@ namespace Vts.MonteCarlo
 
             CurrentTrackIndex++;
 
-            History.SubRegionInfoList[CurrentRegionIndex].PathLength += S;
+            History.SubRegionInfoList[CurrentRegionIndex].PathLength += S; // History 修改 SubRegionInfo 
 
             // only increment number of collisions counter if NOT pseudo-collision
             if (!willHitBoundary)
@@ -179,7 +179,7 @@ namespace Vts.MonteCarlo
                 History.SubRegionInfoList[CurrentRegionIndex].NumberOfCollisions++;
             }
 
-            History.AddDPToHistory(DP);
+            History.AddDPToHistory(DP); // History 修改, Add
 
             return willHitBoundary;
         }
@@ -319,7 +319,7 @@ namespace Vts.MonteCarlo
             
             DP.StateFlag = DP.StateFlag.Add(PhotonStateType.Absorbed);
             DP.StateFlag = DP.StateFlag.Remove(PhotonStateType.Alive);
-            History.AddDPToHistory(DP);
+            History.AddDPToHistory(DP); // History 修改, add
         }
         /// <summary>
         /// Method to de-weight for absorption according to discrete absorption weighting (DAW)
@@ -336,7 +336,7 @@ namespace Vts.MonteCarlo
             // fluence tallying used to be done here 
 
             // update weight for current DP in History 
-            History.HistoryData[History.HistoryData.Count - 1].Weight = DP.Weight;
+            History.HistoryData[History.HistoryData.Count - 1].Weight = DP.Weight; // History 修改, 最后一个 DP.Weight 修正为执行完吸收之后的 weight
         }
         /// <summary>
         /// Method to de-weight for absorption according to continuous absorption weighting (CAW)
@@ -352,7 +352,7 @@ namespace Vts.MonteCarlo
             DP.Weight -= dw;
 
             // update weight for current DP in History 
-            History.HistoryData[History.HistoryData.Count() - 1].Weight = DP.Weight;
+            History.HistoryData[History.HistoryData.Count() - 1].Weight = DP.Weight; // History 修改, 最后一个 DP.Weight 修正为执行完吸收之后的 weight
         }
         /// <summary>
         /// Method to test for death of the photon
@@ -367,7 +367,7 @@ namespace Vts.MonteCarlo
                 !DP.StateFlag.HasFlag(PhotonStateType.PseudoLateralBoundingVirtualBoundary)) return;
             
             DP.StateFlag = DP.StateFlag.Remove(PhotonStateType.Alive);
-            History.AddDPToHistory(DP);
+            History.AddDPToHistory(DP); // History 修改, 光子因离开 VirtualBoundary 而终结 
         }
         /// <summary>
         /// Method that kills photon due to Russian Roulette, maximum path length, etc.
@@ -397,7 +397,7 @@ namespace Vts.MonteCarlo
 
                 if (DP.StateFlag.HasFlag(PhotonStateType.KilledRussianRoulette))
                 {
-                    History.AddDPToHistory(DP);
+                    History.AddDPToHistory(DP); // History 修改, 光子因轮盘赌失败而终结
                 }
             }
             else
@@ -407,13 +407,13 @@ namespace Vts.MonteCarlo
                 {
                     DP.StateFlag = DP.StateFlag.Add(PhotonStateType.KilledOverMaximumCollisions);
                     DP.StateFlag = DP.StateFlag.Remove(PhotonStateType.Alive);
-                    History.AddDPToHistory(DP);
+                    History.AddDPToHistory(DP); // History 修改, 光子因碰撞过多而终结
                 }
                 // kill photon if it has gone too far 
                 if (DP.TotalTime < MaxPhotonTime) return;
                 DP.StateFlag = DP.StateFlag.Add(PhotonStateType.KilledOverMaximumPathLength);
                 DP.StateFlag = DP.StateFlag.Remove(PhotonStateType.Alive);
-                History.AddDPToHistory(DP);
+                History.AddDPToHistory(DP); // History 修改, 光子因路径过长而终结
             }
         }
     }
