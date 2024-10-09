@@ -130,6 +130,7 @@ namespace Vts.MonteCarlo.Tissues
 
             // check if ray within cylinder
             if ((oneIn || _onBoundary) && twoIn)
+            //if (oneIn && twoIn)
             {
                 return false;
             }

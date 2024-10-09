@@ -1,0 +1,1499 @@
+{
+  "OutputName": "one_layer_all_detectors",
+  "N": 100,
+  "Options": {
+    "Seed": 0,
+    "RandomNumberGeneratorType": "MersenneTwister",
+    "AbsorptionWeightingType": "Discrete",
+    "PhaseFunctionType": "HenyeyGreenstein",
+    "Databases": [],
+    "TrackStatistics": false,
+    "RussianRouletteWeightThreshold": 0.0,
+    "SimulationIndex": 0
+  },
+  "SourceInput": {
+    "SourceType": "DirectionalPoint",
+    "PointLocation": {
+      "X": 0.0,
+      "Y": 0.0,
+      "Z": 0.0
+    },
+    "Direction": {
+      "Ux": 0.0,
+      "Uy": 0.0,
+      "Uz": 1.0
+    },
+    "InitialTissueRegionIndex": 0
+  },
+  "TissueInput": {
+    "Regions": [
+      {
+        "TissueRegionType": "Layer",
+        "ZRange": {
+          "Start": "-Infinity",
+          "Stop": 0.0,
+          "Count": 2
+        },
+        "RegionOP": {
+          "Mua": 0.0,
+          "Mus": 1E-10,
+          "G": 1.0,
+          "N": 1.0,
+          "Musp": 1E-10
+        }
+      },
+      {
+        "TissueRegionType": "Layer",
+        "ZRange": {
+          "Start": 0.0,
+          "Stop": 100.0,
+          "Count": 2
+        },
+        "RegionOP": {
+          "Mua": 0.01,
+          "Mus": 5.000000000000001,
+          "G": 0.8,
+          "N": 1.4,
+          "Musp": 1.0
+        }
+      },
+      {
+        "TissueRegionType": "Layer",
+        "ZRange": {
+          "Start": 100.0,
+          "Stop": "Infinity",
+          "Count": 2
+        },
+        "RegionOP": {
+          "Mua": 0.0,
+          "Mus": 1E-10,
+          "G": 1.0,
+          "N": 1.0,
+          "Musp": 1E-10
+        }
+      }
+    ],
+    "TissueType": "MultiLayer"
+  },
+  "DetectorInputs": [
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "TallyType": "AOfRhoAndZ",
+      "Name": "AOfRhoAndZ",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": true,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 201
+      },
+      "Y": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 2
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "TallyType": "AOfXAndYAndZ",
+      "Name": "AOfXAndYAndZ",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": true,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "TallyType": "ATotal",
+      "Name": "ATotal",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Time": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "TallyType": "FluenceOfRhoAndZAndTime",
+      "Name": "FluenceOfRhoAndZAndTime",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": true,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "TallyType": "FluenceOfRhoAndZ",
+      "Name": "FluenceOfRhoAndZ",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": true,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 201
+      },
+      "Y": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 2
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "TallyType": "FluenceOfXAndYAndZ",
+      "Name": "FluenceOfXAndYAndZ",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": true,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 201
+      },
+      "Y": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 2
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Omega": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 21
+      },
+      "TallyType": "FluenceOfXAndYAndZAndOmega",
+      "Name": "FluenceOfXAndYAndZAndOmega",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": true,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 201
+      },
+      "Y": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 2
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Time": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 21
+      },
+      "TallyType": "FluenceOfXAndYAndZAndTime",
+      "Name": "FluenceOfXAndYAndZAndTime",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": true,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 5
+      },
+      "Y": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 2
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 11
+      },
+      "StartingX": {
+        "Start": -1.0,
+        "Stop": 1.0,
+        "Count": 2
+      },
+      "StartingY": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 2
+      },
+      "TallyType": "FluenceOfXAndYAndZAndStartingXAndY",
+      "Name": "FluenceOfXAndYAndZAndStartingXAndY",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": true,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Omega": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 21
+      },
+      "TallyType": "FluenceOfRhoAndZAndOmega",
+      "Name": "FluenceOfRhoAndZAndOmega",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": true,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Fx": {
+        "Start": 0.0,
+        "Stop": 0.5,
+        "Count": 51
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "TallyType": "FluenceOfFxAndZ",
+      "Name": "FluenceOfFxAndZ",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": true,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Angle": {
+        "Start": 0.0,
+        "Stop": 3.141592653589793,
+        "Count": 5
+      },
+      "TallyType": "RadianceOfRhoAndZAndAngle",
+      "Name": "RadianceOfRhoAndZAndAngle",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": true,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Fx": {
+        "Start": 0.0,
+        "Stop": 0.5,
+        "Count": 51
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Angle": {
+        "Start": 0.0,
+        "Stop": 3.141592653589793,
+        "Count": 5
+      },
+      "TallyType": "RadianceOfFxAndZAndAngle",
+      "Name": "RadianceOfFxAndZAndAngle",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": true,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Y": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Theta": {
+        "Start": 0.0,
+        "Stop": 3.141592653589793,
+        "Count": 5
+      },
+      "Phi": {
+        "Start": -3.141592653589793,
+        "Stop": 3.141592653589793,
+        "Count": 5
+      },
+      "TallyType": "RadianceOfXAndYAndZAndThetaAndPhi",
+      "Name": "RadianceOfXAndYAndZAndThetaAndPhi",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": true,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "ZDepth": 3.0,
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "RadianceOfRhoAtZ",
+      "Name": "RadianceOfRhoAtZ",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": true,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "RDiffuse",
+      "Name": "RDiffuse",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Angle": {
+        "Start": 1.5707963267948966,
+        "Stop": 3.141592653589793,
+        "Count": 5
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfAngle",
+      "Name": "ROfAngle",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Fx": {
+        "Start": 0.0,
+        "Stop": 0.5,
+        "Count": 51
+      },
+      "Time": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfFxAndTime",
+      "Name": "ROfFxAndTime",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Fx": {
+        "Start": 0.0,
+        "Stop": 0.5,
+        "Count": 51
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfFx",
+      "Name": "ROfFx",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Fx": {
+        "Start": 0.0,
+        "Stop": 0.5,
+        "Count": 51
+      },
+      "Angle": {
+        "Start": 1.5707963267948966,
+        "Stop": 3.141592653589793,
+        "Count": 5
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfFxAndAngle",
+      "Name": "ROfFxAndAngle",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Fx": {
+        "Start": 0.0,
+        "Stop": 0.5,
+        "Count": 51
+      },
+      "MaxDepth": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfFxAndMaxDepth",
+      "Name": "ROfFxAndMaxDepth",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Angle": {
+        "Start": 1.5707963267948966,
+        "Stop": 3.141592653589793,
+        "Count": 5
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfRhoAndAngle",
+      "Name": "ROfRhoAndAngle",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Omega": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 21
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfRhoAndOmega",
+      "Name": "ROfRhoAndOmega",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Time": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfRhoAndTime",
+      "Name": "ROfRhoAndTime",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "MaxDepth": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfRhoAndMaxDepth",
+      "Name": "ROfRhoAndMaxDepth",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "MaxDepth": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 11
+      },
+      "ZPlane": -1.0,
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfRhoAndMaxDepthRecessed",
+      "Name": "ROfRhoAndMaxDepthRecessed",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfRho",
+      "Name": "ROfRho",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "ZPlane": -1.0,
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfRhoRecessed",
+      "Name": "ROfRhoRecessed",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfXAndY",
+      "Name": "ROfXAndY",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "ZPlane": -1.0,
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfXAndYRecessed",
+      "Name": "ROfXAndYRecessed",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Time": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfXAndYAndTime",
+      "Name": "ROfXAndYAndTime",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Time": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "ZPlane": -1.0,
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfXAndYAndTimeRecessed",
+      "Name": "ROfXAndYAndTimeRecessed",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Time": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfXAndYAndTimeAndSubregion",
+      "Name": "ROfXAndYAndTimeAndSubregion",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Time": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "ZPlane": -1.0,
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfXAndYAndTimeAndSubregionRecessed",
+      "Name": "ROfXAndYAndTimeAndSubregionRecessed",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Y": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Theta": {
+        "Start": 1.5707963267948966,
+        "Stop": 3.141592653589793,
+        "Count": 3
+      },
+      "Phi": {
+        "Start": -3.141592653589793,
+        "Stop": 3.141592653589793,
+        "Count": 5
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfXAndYAndThetaAndPhi",
+      "Name": "ROfXAndYAndThetaAndPhi",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "MaxDepth": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfXAndYAndMaxDepth",
+      "Name": "ROfXAndYAndMaxDepth",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "MaxDepth": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 11
+      },
+      "ZPlane": -1.0,
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfXAndYAndMaxDepthRecessed",
+      "Name": "ROfXAndYAndMaxDepthRecessed",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "RSpecular",
+      "Name": "RSpecular",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": true,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "FinalTissueRegionIndex": 2,
+      "NA": "Infinity",
+      "TallyType": "TDiffuse",
+      "Name": "TDiffuse",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": true,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Angle": {
+        "Start": 0.0,
+        "Stop": 1.5707963267948966,
+        "Count": 5
+      },
+      "FinalTissueRegionIndex": 2,
+      "NA": "Infinity",
+      "TallyType": "TOfAngle",
+      "Name": "TOfAngle",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": true,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Angle": {
+        "Start": 0.0,
+        "Stop": 1.5707963267948966,
+        "Count": 5
+      },
+      "FinalTissueRegionIndex": 2,
+      "NA": "Infinity",
+      "TallyType": "TOfRhoAndAngle",
+      "Name": "TOfRhoAndAngle",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": true,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "FinalTissueRegionIndex": 2,
+      "NA": "Infinity",
+      "TallyType": "TOfRho",
+      "Name": "TOfRho",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": true,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "FinalTissueRegionIndex": 2,
+      "NA": "Infinity",
+      "TallyType": "TOfXAndY",
+      "Name": "TOfXAndY",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": true,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Time": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 2,
+      "NA": "Infinity",
+      "TallyType": "TOfXAndYAndTimeAndSubregion",
+      "Name": "TOfXAndYAndTimeAndSubregion",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": true,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Fx": {
+        "Start": 0.0,
+        "Stop": 0.5,
+        "Count": 51
+      },
+      "FinalTissueRegionIndex": 2,
+      "NA": "Infinity",
+      "TallyType": "TOfFx",
+      "Name": "TOfFx",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": true,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    }
+  ]
+}

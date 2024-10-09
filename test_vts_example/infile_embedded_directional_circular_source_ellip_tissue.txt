@@ -1,0 +1,142 @@
+{
+  "OutputName": "embedded_directional_circular_source_ellip_tissue",
+  "N": 100,
+  "Options": {
+    "Seed": 0,
+    "RandomNumberGeneratorType": "MersenneTwister",
+    "AbsorptionWeightingType": "Discrete",
+    "PhaseFunctionType": "HenyeyGreenstein",
+    "Databases": [],
+    "TrackStatistics": false,
+    "RussianRouletteWeightThreshold": 0.0,
+    "SimulationIndex": 0
+  },
+  "SourceInput": {
+    "ThetaConvOrDiv": 0.7071,
+    "SourceType": "DirectionalCircular",
+    "OuterRadius": 0.2,
+    "InnerRadius": 0.0,
+    "SourceProfile": {
+      "SourceProfileType": "Flat"
+    },
+    "NewDirectionOfPrincipalSourceAxis": {
+      "Ux": 0.0,
+      "Uy": 0.0,
+      "Uz": 1.0
+    },
+    "TranslationFromOrigin": {
+      "X": 0.0,
+      "Y": 0.0,
+      "Z": 5.0
+    },
+    "BeamRotationFromInwardNormal": {
+      "Theta": 0.0,
+      "Phi": 0.0
+    },
+    "InitialTissueRegionIndex": 1
+  },
+  "TissueInput": {
+    "EllipsoidRegion": {
+      "TissueRegionType": "Ellipsoid",
+      "RegionOP": {
+        "Mua": 0.01,
+        "Mus": 5.000000000000001,
+        "G": 0.8,
+        "N": 1.4,
+        "Musp": 1.0
+      },
+      "Center": {
+        "X": 0.0,
+        "Y": 0.0,
+        "Z": 7.0
+      },
+      "Dx": 5.0,
+      "Dy": 0.5,
+      "Dz": 0.5
+    },
+    "LayerRegions": [
+      {
+        "TissueRegionType": "Layer",
+        "ZRange": {
+          "Start": "-Infinity",
+          "Stop": 0.0,
+          "Count": 2
+        },
+        "RegionOP": {
+          "Mua": 0.0,
+          "Mus": 1E-10,
+          "G": 1.0,
+          "N": 1.0,
+          "Musp": 1E-10
+        }
+      },
+      {
+        "TissueRegionType": "Layer",
+        "ZRange": {
+          "Start": 0.0,
+          "Stop": 100.0,
+          "Count": 2
+        },
+        "RegionOP": {
+          "Mua": 0.01,
+          "Mus": 5.0000000000000016E-05,
+          "G": 0.8,
+          "N": 1.4,
+          "Musp": 1E-05
+        }
+      },
+      {
+        "TissueRegionType": "Layer",
+        "ZRange": {
+          "Start": 100.0,
+          "Stop": "Infinity",
+          "Count": 2
+        },
+        "RegionOP": {
+          "Mua": 0.0,
+          "Mus": 1E-10,
+          "G": 1.0,
+          "N": 1.0,
+          "Musp": 1E-10
+        }
+      }
+    ],
+    "TissueType": "SingleEllipsoid"
+  },
+  "DetectorInputs": [
+    {
+      "X": {
+        "Start": -5.0,
+        "Stop": 5.0,
+        "Count": 100
+      },
+      "Y": {
+        "Start": -5.0,
+        "Stop": 5.0,
+        "Count": 100
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "TallyType": "FluenceOfXAndYAndZ",
+      "Name": "FluenceOfXAndYAndZ",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": true,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": true,
+        "IsNotImplementedYet": false
+      }
+    }
+  ]
+}

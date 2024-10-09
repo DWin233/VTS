@@ -21,7 +21,6 @@ namespace Vts.MonteCarlo
         {
             var tempResult = ValidateTissueOpticalProperties(input.DetectorInputs);
             if (!tempResult.IsValid)
-
             {
                 return tempResult;
             }

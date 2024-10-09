@@ -1,0 +1,180 @@
+{
+  "OutputName": "surface_fiber_detector",
+  "N": 100,
+  "Options": {
+    "Seed": 0,
+    "RandomNumberGeneratorType": "MersenneTwister",
+    "AbsorptionWeightingType": "Discrete",
+    "PhaseFunctionType": "HenyeyGreenstein",
+    "Databases": [],
+    "TrackStatistics": true,
+    "RussianRouletteWeightThreshold": 0.0,
+    "SimulationIndex": 0
+  },
+  "SourceInput": {
+    "SourceType": "DirectionalPoint",
+    "PointLocation": {
+      "X": 0.0,
+      "Y": 0.0,
+      "Z": 0.0
+    },
+    "Direction": {
+      "Ux": 0.0,
+      "Uy": 0.0,
+      "Uz": 1.0
+    },
+    "InitialTissueRegionIndex": 1
+  },
+  "TissueInput": {
+    "SurfaceFiberRegion": {
+      "TissueRegionType": "SurfaceFiber",
+      "Center": {
+        "X": 0.0,
+        "Y": 0.0,
+        "Z": 0.0
+      },
+      "Radius": 0.3,
+      "RegionOP": {
+        "Mua": 0.01,
+        "Mus": 5.000000000000001,
+        "G": 0.8,
+        "N": 1.4,
+        "Musp": 1.0
+      }
+    },
+    "LayerRegions": [
+      {
+        "TissueRegionType": "Layer",
+        "ZRange": {
+          "Start": "-Infinity",
+          "Stop": 0.0,
+          "Count": 2
+        },
+        "RegionOP": {
+          "Mua": 0.0,
+          "Mus": 1E-10,
+          "G": 1.0,
+          "N": 1.0,
+          "Musp": 1E-10
+        }
+      },
+      {
+        "TissueRegionType": "Layer",
+        "ZRange": {
+          "Start": 0.0,
+          "Stop": 100.0,
+          "Count": 2
+        },
+        "RegionOP": {
+          "Mua": 0.01,
+          "Mus": 5.000000000000001,
+          "G": 0.8,
+          "N": 1.4,
+          "Musp": 1.0
+        }
+      },
+      {
+        "TissueRegionType": "Layer",
+        "ZRange": {
+          "Start": 100.0,
+          "Stop": "Infinity",
+          "Count": 2
+        },
+        "RegionOP": {
+          "Mua": 0.0,
+          "Mus": 1E-10,
+          "G": 1.0,
+          "N": 1.0,
+          "Musp": 1E-10
+        }
+      }
+    ],
+    "TissueType": "MultiLayerWithSurfaceFiber"
+  },
+  "DetectorInputs": [
+    {
+      "Center": {
+        "X": 0.0,
+        "Y": 0.0,
+        "Z": 0.0
+      },
+      "Radius": 0.3,
+      "N": 1.4,
+      "FinalTissueRegionIndex": 3,
+      "NA": "Infinity",
+      "TallyType": "SurfaceFiber",
+      "Name": "SurfaceFiber_Open",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Center": {
+        "X": 0.0,
+        "Y": 0.0,
+        "Z": 0.0
+      },
+      "Radius": 0.3,
+      "N": 1.4,
+      "FinalTissueRegionIndex": 3,
+      "NA": 0.22,
+      "TallyType": "SurfaceFiber",
+      "Name": "SurfaceFiber_NA0p22",
+      "TallySecondMoment": true,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Center": {
+        "X": 0.0,
+        "Y": 0.0,
+        "Z": 0.0
+      },
+      "Radius": 0.3,
+      "N": 1.4,
+      "FinalTissueRegionIndex": 3,
+      "NA": 0.39,
+      "TallyType": "SurfaceFiber",
+      "Name": "SurfaceFiber_NA0p39",
+      "TallySecondMoment": true,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    }
+  ]
+}

@@ -69,7 +69,7 @@ namespace Vts.Test.MonteCarlo.DataStructuresValidation
             {
                 TissueInput = new SingleEllipsoidTissueInput()
                 {
-                    EllipsoidRegion = new EllipsoidTissueRegion() {Center = new Position(1, 1, 0)}
+                    EllipsoidRegion = new EllipsoidTissueRegion() {Center = new Position(0, 1, 2)}
                 },
                 DetectorInputs = new List<IDetectorInput> {new ROfRhoDetectorInput()}
             };

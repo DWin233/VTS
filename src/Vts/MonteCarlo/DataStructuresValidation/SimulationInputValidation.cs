@@ -165,7 +165,7 @@ namespace Vts.MonteCarlo
                         switch (detectorInput.TallyDetails.IsCylindricalTally)
                         {
                             case true when
-                                ellipsoid.Center.X != 0.0 && ellipsoid.Center.Y != 0.0:
+                                ellipsoid.Center.X != 0.0 || ellipsoid.Center.Y != 0.0:
                                 return new ValidationResult(
                                     false,
                                     "Ellipsoid must be centered at (x,y)=(0,0) for cylindrical tallies",

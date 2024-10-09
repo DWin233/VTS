@@ -108,6 +108,14 @@ namespace Vts.MonteCarlo.Tissues
             return _inclusionRegion.RayIntersectBoundary(projectedPhoton, out distanceToBoundary) ? distanceToBoundary :
                 // if not hitting the inclusion, call the base (layer) method
                 base.GetDistanceToBoundary(photon);
+            //if (_inclusionRegion.RayIntersectBoundary(photon, out var distanceToBoundary))
+            //{
+            //    return distanceToBoundary;
+            //}
+            //else
+            //{
+            //    return base.GetDistanceToBoundary(photon);
+            //}
         }
 
         /// <summary>

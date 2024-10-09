@@ -28,7 +28,8 @@ namespace Vts.MonteCarlo.CommandLineApplication
         /// <returns>int = 2 (infile exists but does not pass validation)</returns>
         public static int Main(string[] args)
         {
-            var inFile = "";
+            var inFile = "D:\\Code\\Storage_from_others\\VTS\\test_vts_example\\infile_infinite_cylinder_AOfXAndYAndZ.2.txt";
+            //var inFile = "";
             var inFiles = new List<string>();
             var outName = "";
             var outPath = "";

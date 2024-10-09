@@ -1,0 +1,655 @@
+{
+  "OutputName": "two_layer_momentum_transfer_detectors",
+  "N": 100,
+  "Options": {
+    "Seed": 0,
+    "RandomNumberGeneratorType": "MersenneTwister",
+    "AbsorptionWeightingType": "Continuous",
+    "PhaseFunctionType": "HenyeyGreenstein",
+    "Databases": [],
+    "TrackStatistics": true,
+    "RussianRouletteWeightThreshold": 0.0,
+    "SimulationIndex": 0
+  },
+  "SourceInput": {
+    "SourceType": "DirectionalPoint",
+    "PointLocation": {
+      "X": 0.0,
+      "Y": 0.0,
+      "Z": 0.0
+    },
+    "Direction": {
+      "Ux": 0.0,
+      "Uy": 0.0,
+      "Uz": 1.0
+    },
+    "InitialTissueRegionIndex": 0
+  },
+  "TissueInput": {
+    "Regions": [
+      {
+        "TissueRegionType": "Layer",
+        "ZRange": {
+          "Start": "-Infinity",
+          "Stop": 0.0,
+          "Count": 2
+        },
+        "RegionOP": {
+          "Mua": 0.0,
+          "Mus": 1E-10,
+          "G": 1.0,
+          "N": 1.0,
+          "Musp": 1E-10
+        }
+      },
+      {
+        "TissueRegionType": "Layer",
+        "ZRange": {
+          "Start": 0.0,
+          "Stop": 1.0,
+          "Count": 2
+        },
+        "RegionOP": {
+          "Mua": 0.01,
+          "Mus": 3.333333333333333,
+          "G": 0.7,
+          "N": 1.33,
+          "Musp": 1.0
+        }
+      },
+      {
+        "TissueRegionType": "Layer",
+        "ZRange": {
+          "Start": 1.0,
+          "Stop": 10.0,
+          "Count": 2
+        },
+        "RegionOP": {
+          "Mua": 0.01,
+          "Mus": 3.333333333333333,
+          "G": 0.7,
+          "N": 1.33,
+          "Musp": 1.0
+        }
+      },
+      {
+        "TissueRegionType": "Layer",
+        "ZRange": {
+          "Start": 10.0,
+          "Stop": "Infinity",
+          "Count": 2
+        },
+        "RegionOP": {
+          "Mua": 0.0,
+          "Mus": 1E-10,
+          "G": 1.0,
+          "N": 1.0,
+          "Musp": 1E-10
+        }
+      }
+    ],
+    "TissueType": "MultiLayer"
+  },
+  "DetectorInputs": [
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfRho",
+      "Name": "ROfRho",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "MTBins": {
+        "Start": 0.0,
+        "Stop": 500.0,
+        "Count": 51
+      },
+      "FractionalMTBins": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ReflectedMTOfRhoAndSubregionHist",
+      "Name": "ReflectedMTOfRhoAndSubregionHist",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "FinalTissueRegionIndex": 2,
+      "NA": "Infinity",
+      "TallyType": "TOfRho",
+      "Name": "TOfRho",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": true,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "MTBins": {
+        "Start": 0.0,
+        "Stop": 500.0,
+        "Count": 51
+      },
+      "FractionalMTBins": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 2,
+      "NA": "Infinity",
+      "TallyType": "TransmittedMTOfRhoAndSubregionHist",
+      "Name": "TransmittedMTOfRhoAndSubregionHist",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": true,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ROfXAndY",
+      "Name": "ROfXAndY",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "MTBins": {
+        "Start": 0.0,
+        "Stop": 500.0,
+        "Count": 51
+      },
+      "FractionalMTBins": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ReflectedMTOfXAndYAndSubregionHist",
+      "Name": "ReflectedMTOfXAndYAndSubregionHist",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "FinalTissueRegionIndex": 2,
+      "NA": "Infinity",
+      "TallyType": "TOfXAndY",
+      "Name": "TOfXAndY",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": true,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -100.0,
+        "Stop": 100.0,
+        "Count": 21
+      },
+      "MTBins": {
+        "Start": 0.0,
+        "Stop": 500.0,
+        "Count": 51
+      },
+      "FractionalMTBins": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 2,
+      "NA": "Infinity",
+      "TallyType": "TransmittedMTOfXAndYAndSubregionHist",
+      "Name": "TransmittedMTOfXAndYAndSubregionHist",
+      "TallySecondMoment": false,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": true,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 11
+      },
+      "BloodVolumeFraction": [
+        0.0,
+        0.5,
+        0.5,
+        0.0
+      ],
+      "MTBins": {
+        "Start": 0.0,
+        "Stop": 500.0,
+        "Count": 51
+      },
+      "FractionalMTBins": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ReflectedDynamicMTOfRhoAndSubregionHist",
+      "Name": "ReflectedDynamicMTOfRhoAndSubregionHist",
+      "TallySecondMoment": true,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Rho": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 101
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 11
+      },
+      "BloodVolumeFraction": [
+        0.0,
+        0.5,
+        0.5,
+        0.0
+      ],
+      "MTBins": {
+        "Start": 0.0,
+        "Stop": 500.0,
+        "Count": 51
+      },
+      "FractionalMTBins": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 2,
+      "NA": "Infinity",
+      "TallyType": "TransmittedDynamicMTOfRhoAndSubregionHist",
+      "Name": "TransmittedDynamicMTOfRhoAndSubregionHist",
+      "TallySecondMoment": true,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": true,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 21
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 11
+      },
+      "BloodVolumeFraction": [
+        0.0,
+        0.5,
+        0.5,
+        0.0
+      ],
+      "MTBins": {
+        "Start": 0.0,
+        "Stop": 500.0,
+        "Count": 51
+      },
+      "FractionalMTBins": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ReflectedDynamicMTOfXAndYAndSubregionHist",
+      "Name": "ReflectedDynamicMTOfXAndYAndSubregionHist",
+      "TallySecondMoment": true,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "X": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 21
+      },
+      "Y": {
+        "Start": -10.0,
+        "Stop": 10.0,
+        "Count": 21
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 11
+      },
+      "BloodVolumeFraction": [
+        0.0,
+        0.5,
+        0.5,
+        0.0
+      ],
+      "MTBins": {
+        "Start": 0.0,
+        "Stop": 500.0,
+        "Count": 51
+      },
+      "FractionalMTBins": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 2,
+      "NA": "Infinity",
+      "TallyType": "TransmittedDynamicMTOfXAndYAndSubregionHist",
+      "Name": "TransmittedDynamicMTOfXAndYAndSubregionHist",
+      "TallySecondMoment": true,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": true,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": true,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Fx": {
+        "Start": 0.0,
+        "Stop": 0.5,
+        "Count": 11
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 11
+      },
+      "BloodVolumeFraction": [
+        0.0,
+        0.5,
+        0.5,
+        0.0
+      ],
+      "MTBins": {
+        "Start": 0.0,
+        "Stop": 500.0,
+        "Count": 51
+      },
+      "FractionalMTBins": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 0,
+      "NA": "Infinity",
+      "TallyType": "ReflectedDynamicMTOfFxAndSubregionHist",
+      "Name": "ReflectedDynamicMTOfFxAndSubregionHist",
+      "TallySecondMoment": true,
+      "TallyDetails": {
+        "IsReflectanceTally": true,
+        "IsTransmittanceTally": false,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    },
+    {
+      "Fx": {
+        "Start": 0.0,
+        "Stop": 0.5,
+        "Count": 11
+      },
+      "Z": {
+        "Start": 0.0,
+        "Stop": 10.0,
+        "Count": 11
+      },
+      "BloodVolumeFraction": [
+        0.0,
+        0.5,
+        0.5,
+        0.0
+      ],
+      "MTBins": {
+        "Start": 0.0,
+        "Stop": 500.0,
+        "Count": 51
+      },
+      "FractionalMTBins": {
+        "Start": 0.0,
+        "Stop": 1.0,
+        "Count": 11
+      },
+      "FinalTissueRegionIndex": 2,
+      "NA": "Infinity",
+      "TallyType": "TransmittedDynamicMTOfFxAndSubregionHist",
+      "Name": "TransmittedDynamicMTOfFxAndSubregionHist",
+      "TallySecondMoment": true,
+      "TallyDetails": {
+        "IsReflectanceTally": false,
+        "IsTransmittanceTally": true,
+        "IsSpecularReflectanceTally": false,
+        "IsInternalSurfaceTally": false,
+        "IspMCReflectanceTally": false,
+        "IspMCTransmittanceTally": false,
+        "IsLateralBoundingVolumeTally": false,
+        "IsVolumeTally": false,
+        "IsCylindricalTally": false,
+        "IsNotImplementedForDAW": false,
+        "IsNotImplementedForCAW": false,
+        "IsNotImplementedYet": false
+      }
+    }
+  ]
+}
